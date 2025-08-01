@@ -1,0 +1,217 @@
+/* ApplicationsDashboard.css */
+
+/* 1. Base variables */
+:root {
+  --bg: #ffffff;
+  --bg-alt: #f9f9f9;
+  --card-bg: #ffffff;
+  --text: #333333;
+  --text-alt: #666666;
+  --primary: #007bff;
+  --primary-hover: #0056d2;
+  --border: #e0e0e0;
+  --shadow: rgba(0, 0, 0, 0.05);
+  --font: 'Segoe UI', sans-serif;
+}
+.dashboard.dark {
+  --bg: #1e1e1e;
+  --bg-alt: #2b2b2b;
+  --card-bg: #2e2e2e;
+  --text: #e1e1e1;
+  --text-alt: #aaaaaa;
+  --primary: #339af0;
+  --primary-hover: #227dc7;
+  --border: #444444;
+  --shadow: rgba(0, 0, 0, 0.5);
+}
+
+/* 2. Layout */
+.dashboard {
+  background: var(--bg-alt);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  font-family: var(--font);
+}
+.dashboard-card {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px var(--shadow);
+  padding: 2rem;
+}
+
+/* 3. Header */
+.dashboard-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  background: var(--bg-alt);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+}
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+/* 4. Controls */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+.ctrl-search,
+.ctrl-filter,
+.ctrl-filter-inline,
+.pagination select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.95rem;
+}
+.ctrl-search {
+  width: 220px;
+}
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+.btn:hover {
+  background: var(--primary-hover);
+}
+.dark-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+}
+
+/* 5. Table */
+.apps-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+.apps-table th,
+.apps-table td {
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+.apps-table th {
+  background: var(--bg-alt);
+  font-weight: 500;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.apps-table tbody tr:nth-child(even) {
+  background: var(--bg-alt);
+}
+.apps-table tbody tr:hover {
+  background: var(--primary-hover + '20'); /* light tint */
+}
+.dashboard.dark .apps-table tbody tr:hover {
+  background: rgba(255,255,255,0.1);
+}
+.apps-table a {
+  color: var(--primary);
+  text-decoration: none;
+}
+.apps-table a:hover {
+  text-decoration: underline;
+}
+
+/* 6. Sorting indicators */
+.sort-indicator {
+  margin-left: 0.25rem;
+  font-size: 0.8rem;
+}
+
+/* 7. Expanded row */
+.expanded-row td {
+  background: #f0f8ff;
+  font-size: 0.9rem;
+}
+.dashboard.dark .expanded-row td {
+  background: rgba(255,255,255,0.05);
+}
+
+/* 8. Pagination */
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+.pagination button,
+.pagination select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+}
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* 9. Loading */
+.loading {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: var(--text-alt);
+}
+
+/* 10. Horizontal scroll wrapper */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;           /* enable horizontal scrolling */
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+  margin-top: 1rem;
+}
+
+/* Optional: style the scrollbar (Webkit-based browsers) */
+.table-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+.table-wrapper::-webkit-scrollbar-track {
+  background: var(--bg-alt);
+}
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Ensure the table expands past the container if needed */
+.apps-table {
+  min-width: 1000px; /* or whatever width you need to accommodate many columns */
+}

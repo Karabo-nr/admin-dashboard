@@ -24,7 +24,7 @@ export default function ApplicationsDashboard() {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:8000/api/applications')
+    fetch('https://13.48.10.3:8443/api/applications')
       .then(res => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
@@ -68,7 +68,7 @@ export default function ApplicationsDashboard() {
   }, []);
 
   const updateStatus = (id, newStatus) => {
-    fetch(`http://localhost:8000/api/applications/${id}/status`, {
+    fetch(`https://13.48.10.3:8443/api/applications/${id}/status`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status: newStatus })
@@ -88,7 +88,7 @@ export default function ApplicationsDashboard() {
     const ids = selectedFlatRows.map(r => r.original.id);
     Promise.all(
       ids.map(id =>
-        fetch(`http://localhost:8000/api/applications/${id}/status`, {
+        fetch(`https://13.48.10.3:8443/api/applications/${id}/status`, {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ status: newStatus })
